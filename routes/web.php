@@ -18,9 +18,14 @@
 
 // // Route::DELETE('todoo/{id}','TodooController@destroy');
 // Route::get('','')
-Route::get('todoo/{id}','TodooController@completed')->name('todoo.destroy');
-Route::get('todoo/{id}','TodooController@destroy')->name('todoo.completed');
+Route::get('todoo/completed/{id}','TodooController@completed')->name('todoo.completed');
 
 
 
 Route::resource('todoo','TodooController');
+Route::resource('admin','AdminController');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

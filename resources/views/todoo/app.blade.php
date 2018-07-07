@@ -8,49 +8,12 @@
         <title>Laravel</title>
 
         <!-- Fonts -->
+
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="{{url('css/bootstrap.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{url('css/toastr.css')}}">
-        
-    <script type="text/javascript" src="{{url('js/bootstrap.min.js')}}"></script>
-    <script type="text/javascript" src="{{url('js/jquery-3.2.1.slim.min.js')}}"></script>
-    <script type="text/javascript" src="{{url('js/toastr.min.js')}}"></script>
 
-    <script type="text/javascript">
-
-    toastr.options = {
-        "closeButton": true,
-        "debug": false,
-        "positionClass": "toast-bottom-right",
-        "onclick": null,
-        "showDuration": "1000",
-        "hideDuration": "1000",
-        "timeOut": "5000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "swing",
-        "showMethod": "slideDown",
-        "hideMethod": "fadeOut"
-    };
-
-
-    @if (Session::has('app_info'))
-    toastr.info("{{ Session::get('app_info') }}", "Message");
-    @endif
-
-    @if (Session::has('app_message'))
-    toastr.success("{{ Session::get('app_message') }}", "Message");
-    @endif
-
-    @if (Session::has('app_warning'))
-    toastr.warning("{{ Session::get('app_warning') }}", "Message");
-    @endif
-
-    @if (Session::has('app_error'))
-    toastr.error("{{ Session::get('app_error') }}", "Message");
-    @endif
-
-</script>
+       
     <meta charset="utf-8" name="csrf_token" content="{{csrf_token()}}" />
 
         <!-- Styles -->
@@ -135,4 +98,53 @@
             </div>
         </div>
     </body>
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{url('js/bootstrap.min.js')}}"></script>
+    <!-- <script type="text/javascript" src="{{url('js/jquery-3.2.1.slim.min.js')}}"></script> -->
+    <!-- <script
+  src="https://code.jquery.com/jquery-2.0.3.js"
+  integrity="sha256-lCf+LfUffUxr81+W0ZFpcU0LQyuZ3Bj0F2DQNCxTgSI="
+  crossorigin="anonymous"></script> -->
+  
+
+    <script type="text/javascript" src="{{url('js/toastr.min.js')}}"></script>
+
+    <script type="text/javascript">
+
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "positionClass": "toast-bottom-right",
+        "onclick": null,
+        "showDuration": "1000",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "swing",
+        "showMethod": "slideDown",
+        "hideMethod": "fadeOut"
+    };
+
+
+    @if (Session::has('app_info'))
+    toastr.info("{{ Session::get('app_info') }}", "Message");
+    @endif
+
+    @if (Session::has('app_message'))
+    toastr.success("{{ Session::get('app_message') }}", "Message");
+    @endif
+
+    @if (Session::has('app_warning'))
+    toastr.warning("{{ Session::get('app_warning') }}", "Message");
+    @endif
+
+    @if (Session::has('app_error'))
+    toastr.error("{{ Session::get('app_error') }}", "Message");
+    @endif
+
+</script>
 </html>

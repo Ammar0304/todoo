@@ -11,6 +11,7 @@ class TodooController extends Controller
 {
     public function index(Request $request) {
 
+        // Session::flash('app_message', 'You must give us consent to contact you before we can proceed to setup your account');
          $data = Todoo::all();
          
     	return view('todoo/index', compact('data'));
@@ -21,15 +22,18 @@ class TodooController extends Controller
          $data = $request->except(['_token','submit','completed']);
          // $data['msql_createdb()-']
          Todoo::create($data);
-         Session::flash('success', 'Data Succesfully Inserted');
+         Session::flash('app_message', 'Data Succesfully Inserted');
          return redirect()->back();
     } 
-        public function destroy($id){
+    public function destroy($id){
         $data = Todoo::find($id);
 
         // dd($data);
         $data->delete($data);
-         Session::flash('success', 'Data Succesfully Deleted');
+         // Session::flash('success', 'Data Succesfully Deleted');
+        Session::flash('app_message', 'Data Succesfully Deleted');
+
+        // session()->flash('success', 'Data Succesfully Deleted');
 
          return redirect()->back();
 
@@ -37,22 +41,23 @@ class TodooController extends Controller
 
     }
 
-    // public function show($id){
+    public function show($id){
 
-    // 	$data = Todoo::find($id);
+    	$data = Todoo::find($id);
     	 
 
-    // 	 return view('todoo/update', compact('data'));
+    	 return view('todoo/update', compact('data'));
 
 
-    // }
+    }
     public function edit(Request $request,$id){
 
     	$data = Todoo::find($id);
         // dd($data);
         $data->text = $request->text;
     	$data->save();
-         Session::flash('success', 'Data Succesfully Updated');
+        
+         Session::flash('app_message', 'Data Succesfully Updated');
 
         return redirect()->route('todoo.index');
 
@@ -62,7 +67,7 @@ class TodooController extends Controller
         $data = Todoo::find($id);
         $data['completed'] = 1;
         $data->save();
-         Session::flash('success', 'Data Succesfully Completed');
+         Session::flash('app_message', 'Data Succesfully Completed');
 
          return redirect()->back();
 
