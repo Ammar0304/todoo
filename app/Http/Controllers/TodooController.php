@@ -37,15 +37,15 @@ class TodooController extends Controller
 
     }
 
-    public function show($id){
+    // public function show($id){
 
-    	$data = Todoo::find($id);
+    // 	$data = Todoo::find($id);
     	 
 
-    	 return view('todoo/update', compact('data'));
+    // 	 return view('todoo/update', compact('data'));
 
 
-    }
+    // }
     public function edit(Request $request,$id){
 
     	$data = Todoo::find($id);
