@@ -4,10 +4,62 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="main-page login-page ">
+                <h2 class="title1">Login</h2>
+                <div class="widget-shadow">
+                    <div class="login-body">
+                         <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                        {{ csrf_field() }}
+                          <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <input id="email" type="email" class="user" name="email" value="{{ old('email') }}" required autofocus placeholder="Enter Your Email">
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                          </div>
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <input id="password" type="password" class="lock" name="password" placeholder="Password"  required>
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
+                            
+                            <div class="forgot-grid">
+                                <label>
+                                     <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me   
+                                </label>
+                               
+                                   
+                                <div class="forgot">
+                                 <label>
+                                      
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                              <button type="submit" class="btn btn-primary">
+                                    Login
+                                </button>
+
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    Forgot Your Password?
+                                </a>
+                            
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+         <!--    <div class="panel panel-default">
+
                 <div class="panel-heading">Login</div>
 
                 <div class="panel-body">
+
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
@@ -62,7 +114,7 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
